@@ -960,36 +960,80 @@
             if (bypassCheckbox.checked) {
                 jarakInput.disabled = true;
 
-                //Total Komponen 3000
-                const predefinedValues = Object.fromEntries(
-                    ['B0ACCK000005', 'B0ACCK000012','B0ACCL000017','B0BC7R4A0259','B0BC8R1A0259','B0ADDH000009',
-                    'B0BC02900004','B1ADKD000009','B1ABCF000176','B1GDCFJ10047','F1J1E334A161','C0DBZMC00006',
-                    'F3F0J107A064','F3F0G2270002','J0ZZB0000238','B0JCPL000020','B1GBCFJJ0002','BOADDH000009',
-                    'B08C019A0007','BOBC4R0A0006','BOBC8R1A0259','BOJCGE000020','BOJCMA000003','COZBZ0002868',
-                    'BOJCCD000041','BOJCMC000006','BOJCNC000008','BOJCNE000039','B1ABAB000064','B1ABCF000010',
-                    'B1ABCF000103','B1ABCF000176','B1ADCF000020','B1ADCE000012','B1ADCF000063','BOJCCE000008',
-                    'B1CFHC000003','B1CHQD000014','B1GBCFEE0004','B1GBCFGG0011','B1GBCFGG0024','B1GBCFGN0022',
-                    'B1GBCFJJ0040','B1GDCFGG0028','CODBAYY01511','CODBGYY02044','CODBGYY02049','CODBZMC00006',
-                    'COEBY0001278','COEBY0002224','COEBY0002225','COEBY0002226','COJBAR000699','H0J327200085',
-                    'JOZZB0000238','RLQM1R0MT-M','RLQM2R2MT-M','C0DBGYY000919','B3AAB0000322','B1GKCFJN0004',
-                    'B1GBCFJN0009','C0JBAR000699','D0GB2R2JA065','B1GBCFGJ0020','B1GDCFGG0005','C0DBAYY01511',
-                    'C0DBGYY02049','C0EBY0001278','C0EBY0002221','C0EBY0002224','C0EBY0002225','C0EBY0002226'
-
+                    //Total Komponen 3000
+                    const predefinedValues = Object.fromEntries([
+                    'B0ACCK000005', 'B0ACCK000012', 'B0ACCL000017', 'B0BC7R4A0259', 'B0BC8R1A0259', 'B0ADDH000009',
+                    'B0BC02900004', 'C0EBY0001524', 'B1ABCF000176', 'B1GDCFJ10047', 'F1J1E334A161', 'C0DBZMC00006',
+                    'F3F0J107A064', 'F3F0G2270002', 'J0ZZB0000238', 'B0JCPL000020', 'B1GBCFJJ0002', 'BOADDH000009',
+                    'B08C019A0007', 'BOBC4R0A0006', 'BOBC8R1A0259', 'BOJCGE000020', 'BOJCMA000003', 'COZBZ0002868',
+                    'BOJCCD000041', 'BOJCMC000006', 'BOJCNC000008', 'BOJCNE000039', 'C0EBY0000661', 'B1ABCF000010',
+                    'B1ABCF000103', 'B1ADCF000020', 'B1ADCE000012', 'B1ADCF000063', 'BOJCCE000008', 'B1CFHC000003',
+                    'B1CHQD000014', 'B1GBCFEE0004', 'B1GBCFGG0011', 'B1GBCFGG0024', 'B1GBCFGN0022', 'B1GBCFJJ0040',
+                    'B1GDCFGG0028', 'CODBAYY01511', 'CODBGYY02044', 'CODBGYY02049', 'COEBY0001278', 'COEBY0002224',
+                    'COEBY0002225', 'COEBY0002226', 'COJBAR000699', 'H0J327200085', 'RLQM1R0MT-M', 'RLQM2R2MT-M',
+                    'C0DBGYY000919', 'B3AAB0000322', 'B1GKCFJN0004', 'B1GBCFJN0009', 'C0JBAR000699','C0EBY0000631',
+                    'B1GBCFGJ0020', 'B1GDCFGG0005', 'C0DBAYY01511', 'C0DBGYY02049', 'C0EBY0001278', 'C0EBY0002221',
+                    'B0ACDR000001', 'B0ADDH000004', 'D0GB102ZA028', 'B0BC7R500001', 'B0BC8R2A0908', 'B0BC9R000008',
+                    'B0CAAB000020', 'B0CDAB000019', 'B0CDAE000002', 'B0CDBB000020', 'B0CDGB000001', 'B0EAKM000103',
+                    'B0EAKM000173', 'B0EAKM000198', 'B0EAKP000180', 'B0EAKR000195', 'B0EAKT000066', 'B0EAMM000039',
+                    'B0ECKM000072', 'B1AAJC000021', 'B1ABAC000022', 'B1ABBB000056', 'B1ABDF000017', 'B1ABDF000026',
+                    'B1ABGB000026', 'B1ABHC000001', 'B1ACNF000026', 'B1ADCF000001', 'B1ADCF000086', 'B1ADGD000004',
+                    'B1ADJB000005', 'B1ADKB000008', 'B1ADMB000003', 'B1BCCD000019', 'B1BCCF000026', 'B1CFCB000017',
+                    'B1CFHC000011', 'B1CFQD000011', 'B1CFQD000023', 'B1CHNC000018', 'B1CHPB000005', 'B1CHPB000012',
+                    'B1DEDQ000025', 'B1DFDD000019', 'B1DHCD000034', 'B1GACFJJ0006', 'B1GACFYY0006', 'B1GBCFAN0001',
+                    'B1GBCFGH0001', 'B1GBCFGJ0013', 'B1GBCFJA0005', 'B1GBCFJN0001', 'B1GBCFJN0033', 'B1GBCFNA0001',
+                    'B1GBCFNN0009', 'B1GBCFNN0015', 'B1GBCFQA0008', 'B1GBCFYY0321', 'B1GDCFGG0033', 'B1GDCFGJ0010',
+                    'B1GDCFJA0013', 'B1GDCFJJ0008', 'B1GDCFJJ0042', 'B1GDCFJN0001', 'B1GDCFNA0006', 'B1GDCFNA0010',
+                    'B1GDCFNN0007', 'B1GDCFNN0032', 'B1GFCFGA0003', 'B1GKCFNN0006', 'B1HBBBA00002', 'B1HBECA00004',
+                    'B0BC01200019', 'B0BC013A0007', 'B0BC019A0007', 'B0BC025A0245', 'B0BC5R000009', 'B0BC5R600003',
+                    'B0BC6R2A0380', 'B3ADB0000047', 'B3FBZ0000015', 'B3PBA0000776', 'B3PBA0000778', 'B3PBA0000779',
+                    'B3PBC0000031', 'C0CBAAC00167', 'C0CBABE00023', 'C0CBABE00040', 'C0CBADE00023', 'C0CBCDH00001',
+                    'C0DAEZZ00003', 'C0DBEKG00003', 'C0DBFYY00164', 'C0DBGYY00330', 'C0DBGYY00662', 'C0DBGYY00915',
+                    'C0DBGYY00919', 'C0DBGYY03303', 'C0DBGYY03319', 'C0DBGYY04113', 'C0DBZYY00531', 'C0EAB0000010',
+                    'C0EBA0000016', 'C0EBC0000033', 'C0EBE0000106', 'C0EBE0000122', 'C0EBE0000124', 'C0EBG0000366',
+                    'C0EBM0000024'
                     ].map(key => [key, 3000])
 
+                    //Total Komponen 16000
+                    .concat(['D1BRR120A064'].map(key => [key, 16000]))
+
+                    //Total Komponen 15000
+                    .concat(['B1ABAB000064'].map(key => [key, 15000]))
+
+
                     //Total Komponen 10000
-                    .concat(['J0JYC0000051','J0JYC0000426','D0GA101JA023','D0GA1021A023','D0GA103JA023',
-                    'D0GA1041A023', 'D0GA105JA023', 'D0GA222JA023', 'D0GAR00J0005', 'F1G1A104A026', 'F1G1E104A078', 
-                    'F1G1E105A186', 'F1G1E225A183', 'F1G1H101A807', 'F1G1H102A548', 'F1G1H103A548', 'F1G1H330A807', 
-                    'F1G1H821B065', 'JOJYC0000426', 'F1G1H471A548', 'D1BA1002A023', 'D1BA3301A022', 'D1BA3301A023', 
-                    'D1BA8661A023'
+                    .concat([
+                    'J0JYC0000051','J0JYC0000426','D0GA101JA023','D0GA1021A023','D0GA103JA023',
+                    'D0GA1041A023','D0GA222JA023','D0GAR00J0005','F1G1A104A026','F1G1E104A078', 
+                    'F1G1E105A186','F1G1E225A183','F1G1H101A807','F1G1H102A548','F1G1H103A548',
+                    'F1G1H330A807','F1G1H821B065','F1G1H471A548','D1BA1002A023','D1BA3301A022',
+                    'D1BA3301A023','D1BA8661A023','D0GA104JA023','D0GA100JA023','D0GA102JA023',
+                    'D0GA106JA023','D0GA124JA023','D0GA150JA023','D0GA151JA023','D0GA152JA023',
+                    'D0GA153JA023','D0GA154JA023','D0GA184JA023','D0GA220JA023','D0GA223JA023',
+                    'D0GA225JA023','D0GA243JA023','D0GA244JA023','D0GA270JA023','D0GA271JA023',
+                    'D0GA272JA023','D0GA274JA023','D0GA2R2JA023','D0GA330JA023','D0GA331JA023',
+                    'D0GA332JA023','D0GA333JA023','D0GA334JA023','D0GA391JA023','D0GA392JA023',
+                    'D0GA393JA023','D0GA394JA023','D0GA470JA023','D0GA471JA023','D0GA473JA023',
+                    'D0GA474JA023','D0GA4R7JA023','D0GA512JA023','D0GA561JA023','D0GA562JA023',
+                    'D0GA681JA023','D0GA683JA023','D0GA684JA023','D0GA823JA023','D1BA1502A023',
+                    'D1BA2002A023','B0BA039A0553','B0ACCK000003','B0ACDR000001','B0ADBD000005',
+                    'B0ADFJ000004','B3ABA0000483'
                     ].map(key => [key, 10000]))
 
                     //Total Komponen 8000
-                    .concat(['B0JCDD000046','B1GBCFNA0016','B1GDCFNA0011'].map(key => [key, 8000]))
+                    .concat([
+                    'B0JCDD000046','B1GBCFNA0016','B1GDCFNA0011','B1GBCFJN0040','B1GBCFLN0015',
+                    'B1GBCFNA0016','B1GDCFNA0011','B1GDCFNN0032'
+                    ].map(key => [key, 8000]))
+                    
+
+                    //Total Komponen 7500
+                    .concat(['B0ECKT000009'].map(key => [key, 7500]))
+
 
                     //Total Komponen 5000
-                    .concat(['COEBY0002216','D0GB100JA065', 'D0GB101JA065', 'D0GB102JA065', 'D0GB103JA065', 
+                    .concat([
+                    'COEBY0002216', 'D0GB100JA065', 'D0GB101JA065', 'D0GB102JA065', 'D0GB103JA065', 
                     'D0GB104JA065', 'D0GB112JA065', 'D0GB122JA065', 'D0GB132JA065', 'D0GB133JA065', 'D0GB150JA065', 
                     'D0GB152JA065', 'D0GB153JA065', 'D0GB182JA065', 'D0GB183JA065', 'D0GB184JA065', 'D0GB202JA007', 
                     'D0GB203JA065', 'D0GB221JA065', 'D0GB222JA065', 'D0GB271JA065', 'D0GB331JA065', 
@@ -1002,35 +1046,183 @@
                     'D1BB4302A074', 'D1BB4702A073', 'D1BB4702A074', 'D1BB4751A073', 'D1BB5621A073', 'D1BB6802A073', 
                     'D1BF1100A073', 'D1BF4023A073', 'D0GF104JA048', 'D0GF122JA048', 'D0GF181JA048', 'D0GF222JA048', 
                     'D0GF242ZA002', 'D0GF301JA038', 'D0GF333JA048', 'D0GF360JA048', 'D0GF751JA048', 'D0GFR00J0005',  
-                    'D0GZ430JA022', 'D0GZ751JA022', 'D1BB1002A074', 'D1BB1002A073', 'C0EBY0002216'
+                    'D0GZ430JA022', 'D0GZ751JA022', 'D1BB1002A074', 'D1BB1002A073', 'C0EBY0002216', 'D0GA105JA023',
+                    'D0GA122JA023', 'D0GA123JA023', 'D0GA180JA023', 'D0GA183JA023', 'D0GA201JA023', 'D0GA203JA023',
+                    'D0GA221JA023', 'D0GA224JA023', 'D0GA273JA023', 'D0GA472JA023', 'D0GA560JA023', 'D0GA563JA023',
+                    'D0GA682JA023', 'D0GA822JA023', 'D0GB100JA057', 'D0GB101JA057', 'D0GB102JA057', 'D0GB103JA057',
+                    'D0GB104JA065', 'D0GB105JA057', 'D0GB105JA065', 'D0GB112JA065', 'D0GB122JA065', 'D0GB123JA065',
+                    'D0GB124JA065', 'D0GB133JA065', 'D0GB151JA057', 'D0GB151JA065', 'D0GB155JA065', 'D0GB181JA065',
+                    'D0GB202JA057', 'D0GB203JA065', 'D0GB220JA065', 'D0GB222JA057', 'D0GB223JA065', 'D0GB224JA065',
+                    'D0GB225JA065', 'D0GB240JA065', 'D0GB243JA057', 'D0GB272JA065', 'D0GB273JA057', 'D0GB274JA065',
+                    'D0GB2R2JA065', 'D0GB302JA065', 'D0GB303ZA028', 'D0GB330JA065', 'D0GB331JA065', 'D0GB332ZA029',
+                    'D0GB333JA065', 'D0GB334JA065', 'D0GB335JA065', 'D0GB391JA065', 'D0GB392JA065', 'D0GB393JA065',
+                    'D0GB394JA065', 'D0GB3R3JA065', 'D0GB431JA065', 'D0GB470JA065', 'D0GB472ZA028', 'D0GB475JA065',
+                    'D0GB510JA065', 'D0GB511JA057', 'D0GB512JA065', 'D0GB560JA065', 'D0GB561JA065', 'D0GB562JA065',
+                    'D0GB563JA065', 'D0GB5R6JA065', 'D0GB680JA065', 'D0GB681JA065', 'D0GB683JA065', 'D0GB684JA065',
+                    'D0GB6R8JA065', 'D0GB752JA065', 'D0GB820JA057', 'D0GB820JA065', 'D0GB821JA065', 'D0GB822JA065',
+                    'D0GB823JA065', 'D0GB824JA065', 'D0GB912ZA029', 'D0GB914JA065', 'D0GD101JA017', 'D0GD101JA052',
+                    'D0GD101JA055', 'D0GD102JA052', 'D0GD102JA055', 'D0GD103JA055', 'D0GD104JA055', 'D0GD122JA052',
+                    'D0GD183JA017', 'D0GD202JA052', 'D0GD224JA017', 'D0GD271JA052', 'D0GD331JA055', 'D0GD471JA052',
+                    'D0GD472JA055', 'D0GD4R7JA017', 'D0GD621JA052', 'D0GD681JA052', 'D0GD752JA052', 'D0GDR00JA055',
+                    'D0GF104JA049', 'D0GF122JA048', 'D0GF152JA048', 'D0GF181JA048', 'D0GF220JA048', 'D0GF222JA049',
+                    'D0GF271JA049', 'D0GF334JA048', 'D0GF360JA049', 'D0GF364JA048', 'D0GF4R7JA048', 'D0GF622JA048',
+                    'D0GF681JA048', 'D0GG204JA039', 'D0GZ104JA022', 'D0YBR0000020', 'D0YBR0000038', 'D0YFR0000020',
+                    'D0YFR00J0002', 'D1AC1400A094', 'D1AC1690A094', 'D1AC1800A094', 'D1AC2200A094', 'D1BA1003A023',
+                    'D1BA1302A023', 'D1BA1800A023', 'D1BA1802A022', 'D1BA2701A023', 'D1BA3001A023', 'D1BA3002A023',
+                    'D1BA3301A022', 'D1BA3903A022', 'D1BA4302A023', 'D1BA4702A022', 'D1BA5101A022', 'D1BA6041A023',
+                    'D1BA6803A022', 'D1BB10020004', 'D1BB10030002', 'D1BB1003A074', 'D1BB1004A073', 'D1BB1202A073',
+                    'D1BB13020002', 'D1BB15010002', 'D1BB1502A073', 'D1BB1503A074', 'D1BB1504A073', 'D1BB1600A010',
+                    'D1BB1600A073', 'D1BB1802A073', 'D1BB1803A073', 'D1BB2001A073', 'D1BB2002A074', 'D1BB2202A073',
+                    'D1BB2203A074', 'D1BB2402A073', 'D1BB2433A074', 'D1BB2702A074', 'D1BB3001A010', 'D1BB3002A010',
+                    'D1BB3002A074', 'D1BB33010002', 'D1BB3301A011', 'D1BB3301A074', 'D1BB3601A010', 'D1BB3601A073',
+                    'D1BB3901A073', 'D1BB3902A074', 'D1BB4301A011', 'D1BB4301A074', 'D1BB4302A074', 'D1BB4702A074',
+                    'D1BB4751A073', 'D1BB5101A011', 'D1BB5102A010', 'D1BB5492A073', 'D1BB5601A073', 'D1BB5603A073',
+                    'D1BB5621A073', 'D1BB6202A073', 'D1BB6801A073', 'D1BB6802A073', 'D1BB8201A073', 'D1BB8202A073',
+                    'D1BB8203A073', 'D1BB82R0A010', 'D1BB82R0A073', 'D1BB8661A010', 'D1BB8661A073', 'D1BB9101A010',
+                    'D1BB9101A073', 'D1BB9311A073', 'D1BD8662A066', 'D1BF1000A067', 'D1BF1000A073', 'D1BF1100A067',
+                    'D1BF2003A064', 'D1BF2003A098', 'D1BF4023A067', 'D1BFR510A065', 'B0AAFK000004', 'B0BA01100097',
+                    'B0BA01400062', 'B0BA036A0480', 'B0BA3R100004', 'B0BA4R000003', 'B0BA4R000012', 'B0BA5R000004',
+                    'B0BA5R100048', 'B0BA6R2A0477', 'B0BA6R2A0479', 'B0BA6R600008', 'B0BA6R800025', 'B0BA8R700009',
+                    'B0BA9R600002', 'B0BA9R600016', 'B0EAKM000126', 'B0EAKM000171'
                     ].map(key => [key, 5000]))
 
                     //Total Komponen 4000
-                    .concat(['D0GA102JA023', 'D0GA103JA023', 'F1H1E104A086', 'F1H1E224A161', 'F1H1E473A086', 
-                    'F1H1H100B043', 'F1H1H102B047', 'F1H1H103A842', 'F1H1H103B047', 'F1H1H104B047', 'F1H1H122A013', 
-                    'F1H1H220B043', 'F1H1H221A004', 'F1H1H223A842', 'F1H1H270A004', 'F1H1H330B043', 'F1H1H332A842', 
-                    'F1H1H333A842', 'F1H1H471B043', 'F1H1H472A842', 'F1H1C8230002', 'F1H1H682A842', 'G1C4R7MA1323', 
-                    'F1H1A1050040', 'F1H1A475A102', 'F1H1A474A046', 'F1H1C104A107', 'F1H1C105A107', 'G1CR15K00017',
-                    'J0JYC0000251', 'D0GL104J0001', 'D1BRR120A064','G1C4R7K00013'
+                    .concat([
+                    'F1H1E104A086', 'F1H1E224A161', 'F1H1E473A086', 'C3FBKY000139',
+                    'F1H1H100B043', 'F1H1H102B047', 'F1H1H103A842', 'F1H1H103B047', 'F1H1H104B047',
+                    'F1H1H122A013', 'F1H1H220B043', 'F1H1H221A004', 'F1H1H223A842', 'F1H1H270A004',
+                    'F1H1H330B043', 'F1H1H332A842', 'F1H1H333A842', 'F1H1H471B043', 'F1H1H472A842',
+                    'F1H1C8230002', 'F1H1H682A842', 'G1C4R7MA1323', 'F1H1A1050040', 'F1H1A475A102',
+                    'F1H1A474A046', 'F1H1C104A107', 'F1H1C105A107', 'G1CR15K00017', 'J0JYC0000251',
+                    'D1BRR120A064', 'G1C4R7K00013', 'D0GL104J0001', 'D0GR220JA022', 'C0FBBY000073',
                     ].map(key => [key, 4000]))
 
-                    //Total Komponen 2000
-                    .concat(['B1ADKD000009', 'F3F0J4760004','F1J1A106A146','F1J0J106A102','F1K1E106A121',
-                    'F1K1E106A167', 'F1J0J226A091', 'F1J1C106A224', 'F1J1E106A315', 'F1J0J106A102', 'F1J0J226A091',
-                    'F1J1A106A146', 'F1K1E106A121', 'F1K1E106A167', 'BOECKV000038'
+                    //Total Komponen 2500
+                    .concat([
+                    'B1HBGFF00034', 'B1JBAR000001', 'C0DBAYY03403', 'C0DBAYY01729', 'C0DBAYY02861',
+                    'C0DBBYY00090', 'C0DBEYY00271', 'C0ZBZ0002094', 'C1AB00004151', 'C1AB00004157',
+                    'C1AB00004210', 'C1AB00004211', 'C1AB00004483', 'C1AB00004511', 'C1BB00000947',
+                    'C1CB00004533', 'C2BBYY000811', 'C3EBDG000052'
+                    ].map(key => [key, 2500]))
 
+
+                    //Total Komponen 2000
+                    .concat([
+                    'B1ADKD000009', 'F3F0J4760004', 'F1J1C106A224', 'F1J1E106A315', 'F1J0J106A102',
+                    'F1J0J226A091', 'F1J1A106A146', 'F1K1E106A121', 'F1K1E106A167', 'BOECKV000038',
+                    'ECEA1EKA4R7I', 'B0BA027A0463', 'B0BA170A0554', 'B0BA180A0554', 'B1ZBZ0000005',
+                    'B0BB14500006', 'B0EAKM000117', 'B0ECKV000038', 'B1HBGFF00014', 'B1HBGFF00026',
+                    'B3AAA0000573', 'B3AAA0000608', 'B3AAA0000721', 'B3AAA0001276', 'B3AAA0001354',
+                    'B3ABA0000789', 'B3ABB0000086', 'B3ACA0000220', 'B3ADA0000161', 'B3AEA0000049',
+                    'B3AFA0000161', 'C0ABBB000228', 'C0ABBB000432', 'C0BBBA000022', 'C0DBAYY02696',
+                    'C0DBGYY07463', 'C0JBAS000349', 'C1AB00002553', 'C1AB00002554', 'C1AB00003566',
+                    'C1AB00003764', 'C1AB00004405', 'C1BB00000496', 'C1BB00000732', 'C1BB00000757',
+                    'C1BB00000763', 'C1BB00001070'
                     ].map(key => [key, 2000]))
 
                     //Total Komponen 1800
-                    .concat(['B0ECKR000089','BOECKR000089','BOECMM000009'].map(key => [key, 1800]))
+                    .concat([
+                    'BOECKR000089', 'BOECMM000009', 'B0ECKP000099', 'B0ECKR000089', 'B0ECKT000012',
+                    'B0ECMM000009'
+                    ].map(key => [key, 1800]))
+
+                    //Total Komponen 1300
+                    .concat(['B0CDBB000019','B0CDGC000001'].map(key => [key, 1300]))
+
+                    //Total Komponen 1280
+                    .concat(['C2CBYY001835'].map(key => [key, 1280]))
 
                     //Total Komponen 1000
-                    .concat(['B0ACCK000005','CODBGYY02678','CODBGYY07480','B1ADND000007','C0DBGYY02678','C0DBGYY07480'
-                    ].map(key => [key, 1000]))
+                    .concat([
+                    'CODBGYY02678', 'CODBGYY07480', 'C0DBGYY07480', 'D0GB162JA065', 'D0GF101JA048',
+                    'D0GF150JA048', 'D0GF1R2JA048', 'D0GF243JA048', 'D0GF6R8JA048', 'D1BB1211A073',
+                    'D1BB1211A141', 'D1BB2700A073', 'D1BB3921A073', 'D1BB4222A073', 'D1BFR390A047',
+                    'D1BFR430A047', 'D1BFR470A065', 'B0BA036A0447', 'B1ABMG000014', 'B1ADMF000017',
+                    'B1ADND000007', 'B3AAA0001360', 'B3ACA0000264', 'B3PAA0000695', 'B3AFA0000145',
+                    'C0CBABC00115', 'C0CBADC00072', 'C0DBGYY02678', 'C1AB00003976', 'C1AB00004021',
+                    'C1AB00004024', 'C1BB00001120', 'C2CBYY000956', 'C2CBYY001558', 'C2CBYY001714'
+                        ].map(key => [key, 1000]))
+
+                    //Total Komponen 960
+                    .concat(['C0HBA0000268'].map(key => [key, 960]))
+
+                    //Total Komponen 952
+                    .concat(['C2CBYY002434','C2CBYY002774'].map(key => [key, 952]))
+
+                    //Total Komponen 720
+                    .concat(['C2CBYY002317'].map(key => [key, 720]))
+
+                    //Total Komponen 600
+                    .concat(['B0CAAB000001'].map(key => [key, 600]))
 
 
                     //Total Komponen 500
-                    .concat(['B0ECKP000099','B1GBCFGJ0013'].map(key => [key, 500]))
+                    .concat(['B0EAMM000038','B3AAA0000778','B3AAA0001371','C0DAEJG00001',
+                    'C2FBYY000008','C3EBHY000023'
+                    ].map(key => [key, 500]))
+                    
+                    //Total Komponen 450
+                    .concat(['C2HBCY000112'].map(key => [key, 450]))
+
+                    //Total Komponen 360
+                    .concat(['B3BA4F000003'].map(key => [key, 360]))
+
+                    //Total Komponen 350
+                    .concat(['C2FBYY000007'].map(key => [key, 350]))
+
+                    //Total Komponen 330
+                    .concat(['C2CBYY000921'].map(key => [key, 330]))
+
+                    //Total Komponen 280
+                    .concat(['B3BB4H000003','B3BB4H000007'].map(key => [key, 280]))
+
+                    //Total Komponen 200
+                    .concat(['B3RAB0000121','B3RAD0000071'].map(key => [key, 200]))
+                    
+                    //Total Komponen 150
+                    .concat(['B3RAD0000255'].map(key => [key, 150]))
+
+                    //Total Komponen 100
+                    .concat([
+                    'B0AARR000024', 'B1BCCG000002', 'B3PAA0000469', 'B3PAA0000555', 'B3PAA0000556',
+                    'B3PAA0000585', 'B3PAA0000586', 'B3PAA0000630', 'B3PAA0000724', 'B3RAD0000226',
+                    'C2DBYY001899'
+                    ].map(key => [key, 100]))
+
+                    //Total Komponen 50
+                    .concat([
+                    'B0EBKR000038', 'B1ACPG000007', 'B2BAGS000002', 'B2BAHT000001', 'C1BA00000082',
+                    'C1BA00000418','C1BA00000507'
+                    ].map(key => [key, 50]))
+
+                    //Total Komponen 45
+                    .concat([
+                    'B3PAC0000185', 'C0DAAYY00092', 'C0DAAYY00124', 'C0DACYY00017', 'C0DACYY00018'
+                    ].map(key => [key, 45]))
+
+                    //Total Komponen 25
+                    .concat([
+                    'C0AAAA000036', 'C1AA00000829', 'C1AA00000837', 'C1AA00000847', 'C1AB00004522',
+                    'C1BA00000414', 'C1BA00000421', 'C1BA00000424', 'C1BA00000481', 'C1BA00000482',
+                    'C1BA00000504', 'C1BA00000505'
+                    ].map(key => [key, 25]))
+
+                    //Total Komponen 22
+                    .concat(['C1BA00000422'].map(key => [key, 22]))
+
+                    //Total Komponen 20
+                    .concat(['C0ZAZ0000155','C0ZAZ0000156','C1BA00000399','C1BA00000406','C1BA00000420'].map(key => [key, 25]))                    
+
+                    //Total Komponen 15
+                    .concat(['B1KAC0000281'].map(key => [key, 15]))
+
+                    //Total Komponen 1
+                    .concat([
+                    'C0EBA0000047', 'C0EBL0000070', 'C0JBAR000573', 'C0JBAS000160', 'C0ZBZ0001747',
+                    'C1AB00003912', 'C1BA00000415', 'C1BA00000423', 'C2CBYY001054', 'C2CBYY001662',
+                    'C2CBYY002092', 'C2DBYY001358', 'C2RXFS22APK', 'C2RXFS22AFN', 'C3FBMY000303',
+                    'C3FBYY000035','C3FBYY000055'
+                    ].map(key => [key, 1]))
                 );
 
                 const predefinedValue = predefinedValues[selectedItem];
@@ -1538,38 +1730,38 @@
             }
         }
 
-function hapusDataRiwayat(mesin, komponen, index) {
-    // Hapus dari historyData
-    historyData[mesin][komponen].splice(index, 1);
-    if (historyData[mesin][komponen].length === 0) {
-        delete historyData[mesin][komponen];
-    }
+        function hapusDataRiwayat(mesin, komponen, index) {
+            // Hapus dari historyData
+            historyData[mesin][komponen].splice(index, 1);
+            if (historyData[mesin][komponen].length === 0) {
+                delete historyData[mesin][komponen];
+            }
 
-    // Simpan data
-    saveData();
-    renderTableRiwayat(); // Refresh tabel riwayat
-}
+            // Simpan data
+            saveData();
+            renderTableRiwayat(); // Refresh tabel riwayat
+        }
 
-function renderTable() {
-    const tbody = document.getElementById('tabelInput').getElementsByTagName('tbody')[0];
-    tbody.innerHTML = ''; // Kosongkan tabel sebelum merender ulang
+        function renderTable() {
+            const tbody = document.getElementById('tabelInput').getElementsByTagName('tbody')[0];
+            tbody.innerHTML = ''; // Kosongkan tabel sebelum merender ulang
 
-    const komponen = selectedListBox1Item || selectedListBox2Item || selectedManualInput;
-    if (tableData[komponen]) {
-        tableData[komponen].forEach((row, index) => {
-            const rowElement = document.createElement('tr');
-            rowElement.innerHTML = `
-                <td>${row.Komponen}</td>
-                <td>${row.Operator}</td>
-                <td>${row.Mesin}</td>
-                <td>${row.Hasil}</td>
-            `;
-            tbody.appendChild(rowElement);
-        });
-    }
+            const komponen = selectedListBox1Item || selectedListBox2Item || selectedManualInput;
+            if (tableData[komponen]) {
+                tableData[komponen].forEach((row, index) => {
+                    const rowElement = document.createElement('tr');
+                    rowElement.innerHTML = `
+                        <td>${row.Komponen}</td>
+                        <td>${row.Operator}</td>
+                        <td>${row.Mesin}</td>
+                        <td>${row.Hasil}</td>
+                    `;
+                    tbody.appendChild(rowElement);
+                });
+            }
 
-    updateTotal(); // Update total setelah merender tabel
-}
+            updateTotal(); // Update total setelah merender tabel
+        }
 
         function updateTotal() {
             const komponen = selectedListBox1Item || selectedListBox2Item;
