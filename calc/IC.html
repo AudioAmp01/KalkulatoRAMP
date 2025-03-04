@@ -1,0 +1,691 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kalkulator Komponen & Riwayat</title>
+    <style>
+        body {
+            font-family: 'Roboto', sans-serif;
+            padding: 20px;
+            margin: 0;
+            background-color: #f9f9f9; /* Light Gray Background */
+        }
+        .card {
+            border: 1px solid #ddd;
+            border-radius: 10px;
+            padding: 20px;
+            margin-bottom: 20px;
+            box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+            background-color: #fee5f0; /* Light Cyan */
+        }
+        .form-group {
+            margin-bottom: 15px;
+        }
+        label {
+            display: block;
+            margin-bottom: 5px;
+        }
+        select, input, button {
+            width: 100%;
+            padding: 8px;
+            margin-top: 5px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 15px;
+        }
+        th, td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: left;
+        }
+        th {
+            background-color: #b2ebf2; /* Cyan */
+        }
+        .footer {
+            text-align: center;
+            margin-top: 20px;
+            color: #555; /* Dark Gray */
+        }
+
+        /* Styling untuk link di dalam footer */
+        .footer a.footer-link {
+            color: #ff9800; /* Orange */
+            text-decoration: none;
+            font-weight: bold;
+            margin-left: 10px;
+        }
+
+        /* Hover effect */
+        .footer a.footer-link:hover {
+            text-decoration: underline;
+            color: #ffffff; /* White */
+        }
+        #riwayatSection {
+            display: none; /* Awalnya disembunyikan */
+        }
+
+        /* Media Queries untuk Responsiveness */
+        @media (max-width: 768px) {
+            body {
+                padding: 10px;
+            }
+            .card {
+                padding: 15px;
+                margin-bottom: 15px;
+            }
+            .form-group {
+                margin-bottom: 10px;
+            }
+            select, input, button {
+                padding: 6px;
+            }
+            table {
+                display: block;
+                overflow-x: auto;
+                white-space: nowrap;
+            }
+            th, td {
+                padding: 6px;
+            }
+            th {
+                font-size: 14px;
+            }
+            td {
+                font-size: 14px;
+            }
+            .footer {
+                font-size: 14px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            body {
+                padding: 5px;
+            }
+            .card {
+                padding: 10px;
+                margin-bottom: 10px;
+            }
+            .form-group {
+                margin-bottom: 5px;
+            }
+            select, input, button {
+                padding: 4px;
+            }
+            table {
+                display: block;
+                overflow-x: auto;
+                white-space: nowrap;
+            }
+            th, td {
+                padding: 4px;
+            }
+            th {
+                font-size: 12px;
+            }
+            td {
+                font-size: 12px;
+            }
+            .footer {
+                font-size: 12px;
+            }
+        }
+
+        /* Styling untuk tombol yang dipilih */
+        .selected {
+            background-color: #4caf50; /* Green */
+        }
+
+        /* Styling untuk tombol */
+        button {
+            background-color: #ff0000; /* Orange */
+            color: white;
+            border: none;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        button:active {
+            background-color: #f57c00; /* Darker Orange */
+        }
+    </style>
+</head>
+<body>
+    <h1>STOCK OPNAME IC</h1>
+
+    <!-- Tombol Reset -->
+    <div class="form-group">
+        <button onclick="resetData()">Reset</button>
+    </div>
+
+    <!-- Lokasi dan Operator -->
+    <div class="card">
+        <div class="form-group">
+            <label for="location_main">Lokasi:</label>
+            <select id="location_main">
+                <option value="blank">Blank</option>
+                <option value="jumper">Jumper</option>
+                <option value="axial">Axial</option>
+                <option value="radial">Radial</option>
+                <option value="stm">STM</option>
+                <option value="finish_good">Finish Good</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="operator_main">Nama Operator:</label>
+            <input type="text" id="operator_main" placeholder="Masukkan nama operator">
+        </div>
+        <div class="form-group">
+            <label for="listBox_main">Komponen:</label>
+            <select id="listBox_main">
+                <option value="B0EDKR000014">B0EDKR000014</option>
+                <option value="C0CBADE00023">C0CBADE00023</option>
+                <option value="B0ECKT000009">B0ECKT000009</option>
+                <option value="C1AB00004995">C1AB00004995</option>
+                <option value="K1MN14BA0059">K1MN14BA0059</option>
+                <option value="C0DBAYY01639">C0DBAYY01639</option>
+                <option value="B1ABMG000014">B1ABMG000014</option>
+                <option value="G1C4R7MA0249">G1C4R7MA0249</option>
+                <option value="K0D112B00067">K0D112B00067</option>
+                <option value="G1C330MA0989">G1C330MA0989</option>
+                <option value="K1KA03BA0270">K1KA03BA0270</option>
+                <option value="K0H1BA000629">K0H1BA000629</option>
+                <option value="EVQPUL02K">EVQPUL02K</option>
+                <option value="RRV14A01C54A">RRV14A01C54A</option>
+                <option value="C2DBYY001899">C2DBYY001899</option>
+                <option value="B3PBA0000776">B3PBA0000776</option>
+                <option value="B3PBA0000778">B3PBA0000778</option>
+                <option value="B3PBA0000779">B3PBA0000779</option>
+                <option value="G1C3R3MA0809">G1C3R3MA0809</option>
+                <option value="G1C4R7MA0249">G1C4R7MA0249</option>
+                <option value="B1ABMG000014">B1ABMG000014</option>
+                <option value="B0ECKT000009">B0ECKT000009</option>
+                <option value="B0ECMR000030">B0ECMR000030</option>
+                <option value="B0EDLU000001">B0EDLU000001</option>
+                <option value="B1CFQD000023">B1CFQD000023</option>
+                <option value="B1CHPB000012">B1CHPB000012</option>
+                <option value="B1HBGFF00034">B1HBGFF00034</option>
+                <option value="B1JBAR000001">B1JBAR000001</option>
+                <option value="B3PBA0000776">B3PBA0000776</option>
+                <option value="B3PBA0000778">B3PBA0000778</option>
+                <option value="B3PBA0000779">B3PBA0000779</option>
+                <option value="BU2305F-E2">BU2305F-E2</option>
+                <option value="C0CBADE00023">C0CBADE00023</option>
+                <option value="C0DBAYY01639">C0DBAYY01639</option>
+                <option value="C0DBAYY02696">C0DBAYY02696</option>
+                <option value="C0DBAYY03403">C0DBAYY03403</option>
+                <option value="C0DBBYY00090">C0DBBYY00090</option>
+                <option value="C0ZBZ0002094">C0ZBZ0002094</option>
+                <option value="C1AB00003764">C1AB00003764</option>
+                <option value="C1AB00004021">C1AB00004021</option>
+                <option value="C1AB00004024">C1AB00004024</option>
+                <option value="C1AB00004405">C1AB00004405</option>
+                <option value="C1AB00004483">C1AB00004483</option>
+                <option value="C1AB00004511">C1AB00004511</option>
+                <option value="C1AB00004995">C1AB00004995</option>
+                <option value="C1BB00000947">C1BB00000947</option>
+                <option value="C1CB00005220">C1CB00005220</option>
+                <option value="C2BBYY000811">C2BBYY000811</option>
+                <option value="C2BBYY002213">C2BBYY002213</option>
+                <option value="C2CBYY001714">C2CBYY001714</option>
+                <option value="C2CBYY003029">C2CBYY003029</option>
+                <option value="C2CBYY002092">C2CBYY002092</option>
+                <option value="C2CBYY002774">C2CBYY002774</option>
+                <option value="C2CBYY002775">C2CBYY002775</option>
+                <option value="C2DBYY001899">C2DBYY001899</option>
+                <option value="C3EBHY000023">C3EBHY000023</option>
+                <option value="C3FBLY000186">C3FBLY000186</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="jarak_main">Jumlah Quantity:</label>
+            <input type="number" id="jarak_main">
+        </div>
+        <div class="form-group">
+            <button onclick="tambahKeTabel()">Tambah ke Tabel</button>
+        </div>
+    </div>
+
+    <!-- Tabel Input -->
+    <div class="card">
+        <h2>Tabel Input:</h2>
+        <table id="tabelInput">
+            <thead>
+                <tr>
+                    <th>Nama Komponen</th>
+                    <th>Operator</th>
+                    <th>Mesin</th>
+                    <th>Hasil</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- Data akan ditambahkan di sini -->
+            </tbody>
+        </table>
+        <div class="form-group">
+            <label for="total_main">Total:</label>
+            <input type="text" id="total_main" readonly>
+        </div>
+    </div>
+
+    <!-- Tombol Riwayat -->
+    <div class="card">
+        <button onclick="showRiwayat()">Riwayat Komponen</button>
+    </div>
+
+    <!-- Bagian Riwayat (awalnya tersembunyi) -->
+    <div id="riwayatSection" class="card">
+        <h2>Riwayat Komponen</h2>
+        <!-- Lokasi -->
+        <div class="form-group">
+            <label for="location_riwayat">Lokasi:</label>
+            <select id="location_riwayat" onchange="filterData()">
+                <option value="all">Semua</option>
+                <option value="blank">Blank</option>
+                <option value="jumper">Jumper</option>
+                <option value="axial">Axial</option>
+                <option value="radial">Radial</option>
+                <option value="stm">STM</option>
+                <option value="finish_good">Finish Good</option>
+            </select>
+        </div>
+
+        <!-- Tabel Riwayat -->
+        <h2>Riwayat Input:</h2>
+        <table id="tabelRiwayat">
+            <thead>
+                <tr>
+                    <th>Tanggal</th>
+                    <th>Nama Komponen</th>
+                    <th>Operator</th>
+                    <th>Mesin</th>
+                    <th>Hasil</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- Data akan ditambahkan di sini -->
+            </tbody>
+        </table>
+        <div class="form-group">
+            <button onclick="exportToExcel()">Export Riwayat</button>
+            <button onclick="exportTotal()">Export Total</button>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <div class="footer">
+        © 2025 PENS - Panasonic Collaboration
+        <a href="Panduan/panduan.html" class="footer-link">Buku Panduan Digital</a>
+    </div>
+
+    <!-- Library SheetJS untuk export Excel -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
+    
+    <script>
+        let tableData = {};
+        let komponenTotal = {};
+        let historyData = {
+            'blank': {},
+            'jumper': {},
+            'axial': {},
+            'radial': {},
+            'stm': {},
+            'finish_good': {},
+        };
+
+        let selectedLocation = 'blank';
+        let selectedOperator = '';
+        let selectedComponent = '';
+
+        document.addEventListener('DOMContentLoaded', () => {
+            loadDataMain();
+        });
+
+        function loadDataMain() {
+            const tableDataString = localStorage.getItem('tableData_IC');
+            const komponenTotalString = localStorage.getItem('komponenTotal_IC');
+            const historyDataString = localStorage.getItem('historyData_IC');
+
+            if (tableDataString && komponenTotalString && historyDataString) {
+                tableData = JSON.parse(tableDataString);
+                komponenTotal = JSON.parse(komponenTotalString);
+                historyData = JSON.parse(historyDataString);
+                renderTable();
+                updateTotal();
+                renderTableRiwayat();
+            }
+        }
+
+        function tambahKeTabel() {
+            const hasil = parseInt(document.getElementById('jarak_main').value);
+            const tanggal = new Date().toISOString().split('T')[0];
+            const mesin = document.getElementById('location_main').value;
+            const operator = document.getElementById('operator_main').value;
+
+            if (!operator.trim()) {
+                alert('Nama Operator tidak boleh kosong.');
+                return; // Operator harus terisi
+            }
+
+            if (hasil && !isNaN(hasil)) {
+                selectedComponent = document.getElementById('listBox_main').value;
+
+                if (!tableData[selectedComponent]) {
+                    tableData[selectedComponent] = [];
+                }
+
+                tableData[selectedComponent].push({
+                    Mesin: mesin,
+                    Operator: operator,
+                    Komponen: selectedComponent,
+                    Hasil: hasil,
+                    Tanggal: tanggal,
+                });
+
+                if (komponenTotal[selectedComponent]) {
+                    komponenTotal[selectedComponent] += hasil;
+                } else {
+                    komponenTotal[selectedComponent] = hasil;
+                }
+
+                if (!historyData[mesin][selectedComponent]) {
+                    historyData[mesin][selectedComponent] = [];
+                }
+                historyData[mesin][selectedComponent].push({
+                    Hasil: hasil,
+                    Tanggal: tanggal,
+                    Operator: operator,
+                });
+
+                saveData();
+                renderTable(); // Render table with only the current component
+                updateTotal();
+                renderTableRiwayat();
+            } else {
+                alert('Mohon isi Quantity yang benar !');
+            }
+        }
+
+        function hapusData(komponen, index) {
+            const mesin = document.getElementById('location_main').value;
+            const hasil = tableData[komponen][index].Hasil;
+
+            komponenTotal[komponen] -= hasil;
+            tableData[komponen].splice(index, 1);
+
+            if (tableData[komponen].length === 0) {
+                delete tableData[komponen];
+            }
+
+            if (historyData[mesin][komponen]) {
+                historyData[mesin][komponen].splice(index, 1);
+                if (historyData[mesin][komponen].length === 0) {
+                    delete historyData[mesin][komponen];
+                }
+            }
+
+            saveData();
+            renderTable();
+            updateTotal();
+            renderTableRiwayat();
+        }
+
+        function showDeleteConfirmationRiwayat(mesin, komponen, index) {
+            if (confirm('Apakah Anda yakin ingin menghapus data ini dari riwayat?')) {
+                hapusDataRiwayat(mesin, komponen, index);
+            }
+        }
+
+        function hapusDataRiwayat(mesin, komponen, index) {
+            // Hapus dari historyData
+            historyData[mesin][komponen].splice(index, 1);
+            if (historyData[mesin][komponen].length === 0) {
+                delete historyData[mesin][komponen];
+            }
+
+            // Simpan data
+            saveData();
+            renderTableRiwayat(); // Refresh tabel riwayat
+        }
+
+        function renderTable() {
+            const tbody = document.getElementById('tabelInput').getElementsByTagName('tbody')[0];
+            tbody.innerHTML = '';
+
+            if (selectedComponent && tableData[selectedComponent]) {
+                tableData[selectedComponent].forEach((row, index) => {
+                    const rowElement = document.createElement('tr');
+                    rowElement.innerHTML = `
+                        <td>${row.Komponen}</td>
+                        <td>${row.Operator}</td>
+                        <td>${row.Mesin}</td>
+                        <td>${row.Hasil}</td>
+                        <td><button onclick="hapusData('${row.Komponen}', ${index})">Hapus</button></td>
+                    `;
+                    tbody.appendChild(rowElement);
+                });
+            }
+        }
+
+        function updateTotal() {
+            let total = 0;
+            if (selectedComponent && tableData[selectedComponent]) {
+                tableData[selectedComponent].forEach(row => {
+                    total += row.Hasil;
+                });
+            }
+            document.getElementById('total_main').value = total;
+        }
+
+        function saveData() {
+            localStorage.setItem('tableData_IC', JSON.stringify(tableData));
+            localStorage.setItem('komponenTotal_IC', JSON.stringify(komponenTotal));
+            localStorage.setItem('historyData_IC', JSON.stringify(historyData));
+        }
+
+        function showRiwayat() {
+            const riwayatSection = document.getElementById('riwayatSection');
+            if (riwayatSection.style.display === 'none') {
+                riwayatSection.style.display = 'block';
+                renderTableRiwayat();
+            } else {
+                riwayatSection.style.display = 'none';
+            }
+        }
+
+        function renderTableRiwayat(location = 'all') {
+            const tbody = document.getElementById('tabelRiwayat').getElementsByTagName('tbody')[0];
+            tbody.innerHTML = '';
+
+            for (const mesin in historyData) {
+                if (location === 'all' || mesin === location) {
+                    for (const komponen in historyData[mesin]) {
+                        historyData[mesin][komponen].forEach((data, index) => {
+                            const rowElement = document.createElement('tr');
+                            rowElement.innerHTML = `
+                                <td>${data.Tanggal}</td>
+                                <td>${komponen}</td>
+                                <td>${data.Operator}</td>
+                                <td>${mesin}</td>
+                                <td>${data.Hasil}</td>
+                                <td><button onclick="showDeleteConfirmationRiwayat('${mesin}', '${komponen}', ${index})">Hapus</button></td>
+                            `;
+                            tbody.appendChild(rowElement);
+                        });
+                    }
+                }
+            }
+        }
+
+        function filterData() {
+            const location = document.getElementById('location_riwayat').value;
+            renderTableRiwayat(location);
+        }
+
+        function exportToExcel() {
+            const location = document.getElementById('location_riwayat').value;
+            const wb = XLSX.utils.book_new();
+            const wsData = [];
+
+            // Header untuk Excel
+            const header = ["Tanggal", "Nama Komponen", "Operator", "Mesin", "Hasil"];
+            wsData.push(header);
+
+            // Mengisi data berdasarkan lokasi (AVK, RH1-4 atau semua)
+            for (const mesin in historyData) {
+                if (location === 'all' || mesin === location) {
+                    for (const komponen in historyData[mesin]) {
+                        historyData[mesin][komponen].forEach(data => {
+                            const row = [
+                                data.Tanggal,
+                                komponen,
+                                data.Operator, // Use the stored operator
+                                mesin,
+                                data.Hasil
+                            ];
+                            wsData.push(row);
+                        });
+                    }
+                }
+            }
+
+            // Membuat worksheet dari data
+            const ws = XLSX.utils.aoa_to_sheet(wsData);
+
+            // Mengatur style untuk header (bold dan alignment)
+            const headerStyle = {
+                font: { bold: true },
+                alignment: { horizontal: 'center' }
+            };
+            for (let col = 0; col < header.length; col++) {
+                const cellAddress = XLSX.utils.encode_cell({ r: 0, c: col });
+                if (!ws[cellAddress].s) ws[cellAddress].s = {};
+                Object.assign(ws[cellAddress].s, headerStyle);
+            }
+
+            // Menambahkan border ke semua sel
+            const range = XLSX.utils.decode_range(ws['!ref']);
+            for (let row = range.s.r; row <= range.e.r; row++) {
+                for (let col = range.s.c; col <= range.e.c; col++) {
+                    const cellAddress = XLSX.utils.encode_cell({ r: row, c: col });
+                    if (!ws[cellAddress].s) ws[cellAddress].s = {};
+                    ws[cellAddress].s.border = {
+                        top: { style: 'thin' },
+                        bottom: { style: 'thin' },
+                        left: { style: 'thin' },
+                        right: { style: 'thin' }
+                    };
+                }
+            }
+
+            // Menambahkan worksheet ke workbook
+            XLSX.utils.book_append_sheet(wb, ws, "Data Komponen");
+
+            // Menyimpan file Excel
+            const fileName = location === 'all' ? 'Riwayat_Semua_IC.xlsx' : `Riwayat_IC_${location}.xlsx`;
+            XLSX.writeFile(wb, fileName);
+        }
+
+        function exportTotal() {
+            const location = document.getElementById('location_riwayat').value;
+            const wb = XLSX.utils.book_new();
+            const wsData = [];
+
+            // Header untuk Excel
+            const header = ["Tanggal", "Nama Komponen", "Total"];
+            wsData.push(header);
+
+            // Mengisi data berdasarkan lokasi (AVK, RH1-4 atau semua)
+            const totalData = {};
+
+            for (const mesin in historyData) {
+                if (location === 'all' || mesin === location) {
+                    for (const komponen in historyData[mesin]) {
+                        if (!totalData[komponen]) {
+                            totalData[komponen] = { total: 0, tanggal: '' };
+                        }
+
+                        historyData[mesin][komponen].forEach(data => {
+                            totalData[komponen].total += data.Hasil;
+                            totalData[komponen].tanggal = data.Tanggal; // Assuming all dates are the same for simplicity
+                        });
+                    }
+                }
+            }
+
+            // Mengisi data ke dalam wsData
+            for (const komponen in totalData) {
+                const row = [
+                    totalData[komponen].tanggal,
+                    komponen,
+                    totalData[komponen].total
+                ];
+                wsData.push(row);
+            }
+
+            // Membuat worksheet dari data
+            const ws = XLSX.utils.aoa_to_sheet(wsData);
+
+            // Mengatur style untuk header (bold dan alignment)
+            const headerStyle = {
+                font: { bold: true },
+                alignment: { horizontal: 'center' }
+            };
+            for (let col = 0; col < header.length; col++) {
+                const cellAddress = XLSX.utils.encode_cell({ r: 0, c: col });
+                if (!ws[cellAddress].s) ws[cellAddress].s = {};
+                Object.assign(ws[cellAddress].s, headerStyle);
+            }
+
+            // Menambahkan border ke semua sel
+            const range = XLSX.utils.decode_range(ws['!ref']);
+            for (let row = range.s.r; row <= range.e.r; row++) {
+                for (let col = range.s.c; col <= range.e.c; col++) {
+                    const cellAddress = XLSX.utils.encode_cell({ r: row, c: col });
+                    if (!ws[cellAddress].s) ws[cellAddress].s = {};
+                    ws[cellAddress].s.border = {
+                        top: { style: 'thin' },
+                        bottom: { style: 'thin' },
+                        left: { style: 'thin' },
+                        right: { style: 'thin' }
+                    };
+                }
+            }
+
+            // Menambahkan worksheet ke workbook
+            XLSX.utils.book_append_sheet(wb, ws, "Total Komponen");
+
+            // Menyimpan file Excel
+            const fileName = location === 'all' ? 'Total_Semua_IC.xlsx' : `Total_IC_${location}.xlsx`;
+            XLSX.writeFile(wb, fileName);
+        }
+
+        function resetData() {
+            if (confirm('Apakah Anda yakin ingin mereset semua data?')) {
+                localStorage.removeItem('tableData_IC');
+                localStorage.removeItem('komponenTotal_IC');
+                localStorage.removeItem('historyData_IC');
+                tableData = {};
+                komponenTotal = {};
+                historyData = {
+                    'blank': {},
+                    'jumper': {},
+                    'axial': {},
+                    'radial': {},
+                    'stm': {},
+                    'finish_good': {},
+                };
+                renderTable();
+                updateTotal();
+                renderTableRiwayat();
+                alert('Data telah direset.');
+            }
+        }
+    </script>
+</body>
+</html>
