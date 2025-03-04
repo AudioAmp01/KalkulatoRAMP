@@ -168,12 +168,10 @@
         <div class="form-group">
             <label for="location_main">Lokasi:</label>
             <select id="location_main">
-                <option value="blank">Blank</option>
-                <option value="jumper">Jumper</option>
-                <option value="axial">Axial</option>
-                <option value="radial">Radial</option>
-                <option value="stm">STM</option>
-                <option value="finish_good">Finish Good</option>
+                <option value="SMT1">SMT 1</option>
+                <option value="SMT2">SMT 2</option>
+                <option value="SMT3">SMT 3</option>
+                <option value="RACK">RACK</option>
             </select>
         </div>
         <div class="form-group">
@@ -184,7 +182,7 @@
             <label for="listBox_main">Komponen:</label>
             <select id="listBox_main">
                 <option value="B0EDKR000014">B0EDKR000014</option>
-                <option value="C0CBADE00023">C0CBADE00023</option>
+                <option value="C0CBADE00023">C0CBADE000023</option>
                 <option value="B0ECKT000009">B0ECKT000009</option>
                 <option value="C1AB00004995">C1AB00004995</option>
                 <option value="K1MN14BA0059">K1MN14BA0059</option>
@@ -286,12 +284,10 @@
             <label for="location_riwayat">Lokasi:</label>
             <select id="location_riwayat" onchange="filterData()">
                 <option value="all">Semua</option>
-                <option value="blank">Blank</option>
-                <option value="jumper">Jumper</option>
-                <option value="axial">Axial</option>
-                <option value="radial">Radial</option>
-                <option value="stm">STM</option>
-                <option value="finish_good">Finish Good</option>
+                <option value="SMT1">SMT 1</option>
+                <option value="SMT2">SMT 2</option>
+                <option value="SMT3">SMT 3</option>
+                <option value="RACK">RACK</option>
             </select>
         </div>
 
@@ -330,15 +326,13 @@
         let tableData = {};
         let komponenTotal = {};
         let historyData = {
-            'blank': {},
-            'jumper': {},
-            'axial': {},
-            'radial': {},
-            'stm': {},
-            'finish_good': {},
+            'SMT1': {},
+            'SMT2': {},
+            'SMT3': {},
+            'RACK': {},
         };
 
-        let selectedLocation = 'blank';
+        let selectedLocation = 'SMT1';
         let selectedOperator = '';
         let selectedComponent = '';
 
@@ -536,7 +530,7 @@
             const header = ["Tanggal", "Nama Komponen", "Operator", "Mesin", "Hasil"];
             wsData.push(header);
 
-            // Mengisi data berdasarkan lokasi (AVK, RH1-4 atau semua)
+            // Mengisi data berdasarkan lokasi (SMT 1, SMT 2, SMT 3, RACK atau semua)
             for (const mesin in historyData) {
                 if (location === 'all' || mesin === location) {
                     for (const komponen in historyData[mesin]) {
@@ -600,7 +594,7 @@
             const header = ["Tanggal", "Nama Komponen", "Total"];
             wsData.push(header);
 
-            // Mengisi data berdasarkan lokasi (AVK, RH1-4 atau semua)
+            // Mengisi data berdasarkan lokasi (SMT 1, SMT 2, SMT 3, RACK atau semua)
             const totalData = {};
 
             for (const mesin in historyData) {
@@ -673,12 +667,10 @@
                 tableData = {};
                 komponenTotal = {};
                 historyData = {
-                    'blank': {},
-                    'jumper': {},
-                    'axial': {},
-                    'radial': {},
-                    'stm': {},
-                    'finish_good': {},
+                    'SMT1': {},
+                    'SMT2': {},
+                    'SMT3': {},
+                    'RACK': {},
                 };
                 renderTable();
                 updateTotal();
