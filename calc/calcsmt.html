@@ -482,9 +482,9 @@
                 <option value="D4CC11030018"></option>
                 <option value="D4CC1103A038"></option>
                 
-                <option value="ERBRE0R50V"></option> <!-- DOGB -->
+                <option value="ERBRE0R50V"></option> <!-- D0GB -->
                 <option value="ERJ3GEYJ132V"></option> <!-- D0GB DONE -->
-                <option value="ERJ12YJ104U"></option> <!-- DOGZ DONE -->
+                <option value="ERJ12YJ104U"></option> <!-- D0GZ DONE -->
                 <!-- <option value="EVQPUL02K"></option> -->
                 <option value="F1G0J105A063"></option>
                 <option value="F1G1A104A026"></option>
@@ -1001,8 +1001,8 @@
                     'D1BB2002A073', 'D1BB2002A074', 'D1BB2201A073', 'D1BB2203A074', 'D1BB2433A074', 'D1BB3002A074', 
                     'D1BB4302A074', 'D1BB4702A073', 'D1BB4702A074', 'D1BB4751A073', 'D1BB5621A073', 'D1BB6802A073', 
                     'D1BF1100A073', 'D1BF4023A073', 'D0GF104JA048', 'D0GF122JA048', 'D0GF181JA048', 'D0GF222JA048', 
-                    'DOGF242ZA002', 'D0GF301JA038', 'DOGF333JA048', 'DOGF360JA048', 'D0GF751JA048', 'DOGFR00J0005',  
-                    'DOGZ430JA022', 'DOGZ751JA022', 'D1BB1002A074', 'D1BB1002A073', 'C0EBY0002216'
+                    'D0GF242ZA002', 'D0GF301JA038', 'D0GF333JA048', 'D0GF360JA048', 'D0GF751JA048', 'D0GFR00J0005',  
+                    'D0GZ430JA022', 'D0GZ751JA022', 'D1BB1002A074', 'D1BB1002A073', 'C0EBY0002216'
                     ].map(key => [key, 5000]))
 
                     //Total Komponen 4000
@@ -1416,10 +1416,17 @@
                 } else {
                     const location = document.getElementById('location_main').value;
                     let result = 0;
-
                     if (location === 'RACK') {
                         result = (3.14 * numerator) / denominator;
-                    } else if (location === 'SMT 1' || location === 'SMT 2' || location === 'SMT 3') {
+                    } else if (location === 'SMT 1') {
+                        if (p === 2) {
+                            result = ((3.14 * numerator) / denominator) + 240;
+                        } else if (p === 4) {
+                            result = ((3.14 * numerator) / denominator) + 120;
+                        } else if (p === 8) {
+                            result = ((3.14 * numerator) / denominator) + 60;
+                        }
+                    } else if (location === 'SMT 2' || location === 'SMT 3') {
                         if (p === 2) {
                             result = ((3.14 * numerator) / denominator) + 460;
                         } else if (p === 4) {
@@ -1428,7 +1435,6 @@
                             result = ((3.14 * numerator) / denominator) + 115;
                         }
                     }
-
                     document.getElementById('hasilPerhitungan_main').value = Math.floor(result).toString();
                 }
             } else {
