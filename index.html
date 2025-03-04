@@ -28,6 +28,8 @@
             --card2-gradient-color2: #f5af19;/* #f5af19   */
             --card3-gradient-color1: #33ff00;/* #7F00FF   */
             --card3-gradient-color2: #1e00ff;/* #E100FF   */
+            --card4-gradient-color1: #ff0000;/* #7F00FF   */
+            --card4-gradient-color2: #ff2f8d;/* #E100FF   */
         }
 
         body {
@@ -154,6 +156,13 @@
         .card-btn.three {
             background: linear-gradient(to left, var(--card3-gradient-color1), var(--card3-gradient-color2));
         }
+        .card-header.four {
+            background: linear-gradient(to left, var(--card4-gradient-color1), var(--card4-gradient-color2));
+        }
+        .card-btn.four {
+            background: linear-gradient(to left, var(--card4-gradient-color1), var(--card4-gradient-color2));
+        }
+
     </style>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
 </head>
@@ -192,6 +201,16 @@
                 <a href="calc/pcb.html" class="card-btn three">Open</a>
             </div>
         </div>
+        <div class="card-wrap">
+            <div class="card-header four">
+                <i class="fas fa-calculator"></i>
+            </div>
+            <div class="card-content">
+                <h1 class="card-title">STOCK OPNAME IC</h1>
+                <p class="card-text">Penghitung Jumlah Mesin</p>
+                <a href="calc/mesin.html" class="card-btn four">Open</a>
+            </div>
+        </div>        
     </div>
     <footer>
         © 2025 PENS - Panasonic Collaboration
