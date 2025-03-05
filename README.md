@@ -1,8 +1,9 @@
 
 # 🚀 **Kalkulator Penghitung SMT dan Komponen Elektronik**
 
-![SMT Calculator](https://via.placeholder.com/1200x400?text=Kalkulator+Penghitung+SMT)
-
+<p align="center">
+  <img src="Panduan/assets/Index.jpg" alt="SMT Calculator" width="1200"/>
+</p>
 ---
 
 ## 📌 **Deskripsi Proyek**
