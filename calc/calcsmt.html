@@ -585,6 +585,7 @@
 
                 <option value="K5H501Y00012"></option>
                 <option value="G1C4R7K00013"></option> <!-- BARU-->
+                <option value="F1J2E102A036"></option> <!-- BARU-->
             </datalist>
         </div>
         <div class="form-group">
@@ -716,10 +717,9 @@
                 <option value="F1J0J226A091"> <!-- BARU-->
                 <option value="F1J1A106A146"> <!-- BARU-->
                 <option value="F1J1C106A224"> <!-- BARU-->
-                <!-- <option value="F1J1E105A171"> -->
+                <option value="F1J1E105A171"> <!-- BARU-->
                 <option value="F1J1E106A315"> <!-- BARU-->
                 <option value="F1J1E334A161"> <!-- BARU-->
-                <!-- <option value="F1J2E102A036"> -->
                 <option value="F1J2E103A035"> <!-- BARU-->
                 <option value="CODBAYY02861"> <!-- BARU-->
                 <option value="F1K1E106A121"> <!-- BARU-->
@@ -991,7 +991,7 @@
                     'C0DAEZZ00003', 'C0DBEKG00003', 'C0DBFYY00164', 'C0DBGYY00330', 'C0DBGYY00662', 'C0DBGYY00915',
                     'C0DBGYY00919', 'C0DBGYY03303', 'C0DBGYY03319', 'C0DBGYY04113', 'C0DBZYY00531', 'C0EAB0000010',
                     'C0EBA0000016', 'C0EBC0000033', 'C0EBE0000106', 'C0EBE0000122', 'C0EBE0000124', 'C0EBG0000366',
-                    'C0EBM0000024','F1J2E103A035'
+                    'C0EBM0000024','F1J2E103A035' , 'F1J1E105A171'
                     ].map(key => [key, 3000])
 
                     //Total Komponen 16000
@@ -1017,7 +1017,7 @@
                     'D0GA474JA023','D0GA4R7JA023','D0GA512JA023','D0GA561JA023','D0GA562JA023',
                     'D0GA681JA023','D0GA683JA023','D0GA684JA023','D0GA823JA023','D1BA1502A023',
                     'D1BA2002A023','B0BA039A0553','B0ACCK000003','B0ACDR000001','B0ADBD000005',
-                    'B0ADFJ000004','B3ABA0000483'
+                    'B0ADFJ000004','B3ABA0000483','F1G0J105A063'
                     ].map(key => [key, 10000]))
 
                     //Total Komponen 8000
@@ -1088,7 +1088,7 @@
 
                     //Total Komponen 4000
                     .concat([
-                    'F1H1E104A086', 'F1H1E224A161', 'F1H1E473A086', 'C3FBKY000139',
+                    'F1H1E104A086', 'F1H1E224A161', 'F1H1E473A086', 'C3FBKY000139', 'F1J2E102A036',
                     'F1H1H100B043', 'F1H1H102B047', 'F1H1H103A842', 'F1H1H103B047', 'F1H1H104B047',
                     'F1H1H122A013', 'F1H1H220B043', 'F1H1H221A004', 'F1H1H223A842', 'F1H1H270A004',
                     'F1H1H330B043', 'F1H1H332A842', 'F1H1H333A842', 'F1H1H471B043', 'F1H1H472A842',
@@ -1364,6 +1364,7 @@
                     'C0EBY0002226' : {'dIn': 62.26, 't': 1.35, 'p': 4}, //G
                     'H0J327200085' : {'dIn': 64.28, 't': 1.95, 'p': 4}, //G
                     'F1J2E103A035' : {'dIn': 63.26, 't': 1.55, 'p': 4}, //G
+                    'F1J1E105A171' : {'dIn': 62.14, 't': 1.58, 'p': 4}, //G
                 };
 
                 // Data untuk listBox1
@@ -1491,6 +1492,10 @@
                 'F1H1H6R0A016', 'F1H1H7R0B091', 'F1H1H822A842', 'F1H1H8R0B091'
                 ];
 
+                const validItemsF1G0 = ['F1G0J105A063'];
+
+                const validItemsF1J2 = ['F1J2E102A036'];
+
                 // Cek apakah item dari listBox2 dipilih
                 if (listBox2Items[selectedListBox2Item]) {
                     dIn = listBox2Items[selectedListBox2Item].dIn;
@@ -1613,6 +1618,14 @@
                         dIn = 63.63; // Nilai dIn untuk semua item ini 
                         p = 4; // Nilai p untuk semua item ini 
                         t = 1.12; // Nilai t untuk semua item ini 
+                    } else if (validItemsF1G0.includes(selectedListBox1Item)) {
+                        dIn = 60.31; // Nilai dIn untuk semua item ini 
+                        p = 2; // Nilai p untuk semua item ini 
+                        t = 0.74; // Nilai t untuk semua item ini 
+                    } else if (validItemsF1J2.includes(selectedListBox1Item)) {
+                        dIn = 62.73; // Nilai dIn untuk semua item ini 
+                        p = 4; // Nilai p untuk semua item ini 
+                        t = 1.33; // Nilai t untuk semua item ini 
                     }
                 }
 
