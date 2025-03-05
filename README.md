@@ -4,6 +4,7 @@
 <p align="center">
   <img src="Panduan/assets/Index.jpg" alt="SMT Calculator" width="1200"/>
 </p>
+
 ---
 
 ## 📌 **Deskripsi Proyek**
